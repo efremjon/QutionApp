@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block titel %} home {% endblock %}
+
+{% block content %} 
+<br>
+<H1>Exam Center</H1>
+<hr>
+<br>
+<form action="{{all_qutions.id}}" method="POST">
+{%  csrf_token %}
+  <table>
+    <thead>
+      <tr>
+        <th>
+        <strong>Question:</strong>{{all_qutions.id}}) {{ all_qutions}}
+       </th>
+    </tr>
+    </thead>
+    {% for i in all_qutions.choose_set.all %}
+    <tbody>
+<tr>
+  <td><input type="radio" class="rb" name="{{i.id}}" id="opetion1" value="{{i.opetion1}}"> {{i.opetion1}}</td>
+</tr>
+<tr>
+  <td><input type="radio" class="rb" name="{{i.id}}" id="opetion2" value="{{i.opetion1}}"> {{i.opetion2}}</td>
+</tr>
+<tr>
+  <td><input type="radio" class="rb" name="{{i.id}}" id="opetion3" value="{{i.opetion1}}"> {{i.opetion3}}</td>
+</tr>
+<tr>
+  <td><input type="radio" class="rb" name="{{i.id}}" id="opetion4" value="{{i.opetion1}}"> {{i.opetion4}}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+<br>
+<hr>
+
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group me-2" role="group" aria-label="First group">
+    <button type="submit" class="btn btn-primary" name="next" >Next</button>
+  </div>
+</form>
+{{exactAnser}}
+  {% endblock %}
+
+
+
